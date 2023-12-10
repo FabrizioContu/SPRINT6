@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { services } from "../services.js";
-import { budgetList } from "../budgetsList.js";
 
 export const Context = createContext();
 
@@ -23,11 +22,9 @@ export const ContextProvider = ({ children }) => {
       params.set(service.title, service.checked.toString());
     });
 
-    // Add other parameters like pages and lang
     params.set("pages", page.toString());
     params.set("lang", language.toString());
 
-    // Replace the current URL with the updated one
     window.history.replaceState(null, "", `?${params.toString()}`);
   };
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Context } from "../Contexto/Contexto";
 import { Link } from "react-router-dom";
 import WebService from "../components/WebService";
@@ -6,15 +6,8 @@ import BudgetCard from "../components/BudgetCard";
 import BudgetList from "../components/BudgetList";
 
 function ServiceList() {
-  const {
-    services,
-    total,
-    handleChange,
-    toggleDiscount,
-    discount,
-    page,
-    language,
-  } = useContext(Context);
+  const { services, total, handleChange, toggleDiscount, discount } =
+    useContext(Context);
 
   return (
     <div>
