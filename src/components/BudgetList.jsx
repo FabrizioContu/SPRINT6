@@ -10,7 +10,6 @@ function BudgetList() {
     deleteTask,
     searchTerm,
     searchBudget,
-    discount,
   } = useContext(Context);
 
   if (budgetList.length === 0) {
@@ -27,14 +26,13 @@ function BudgetList() {
         <div>
           <input
             type="text"
-            className="px-5 text-lg text-black bg-white border border-gray-400 rounded-lg"
+            className="px-5 py-1 text-lg text-black bg-white border border-teal-700 rounded-lg"
             id="search"
-            value={searchTerm}
             onChange={(e) => searchBudget(e.target.value)}
           />
         </div>
 
-        <p className="mx-4 align-middle">Order by</p>
+        <p className="mx-4 align-middle pt-2">Order by</p>
         <button
           className="px-5 text-lg bg-white border border-gray-400 rounded-lg"
           onClick={orderByName}
@@ -84,7 +82,7 @@ function BudgetList() {
           <div className="text-end">
             <p className="">Total: </p>
             <div className="font-bold text-3xl">
-              {discount ? (budget.total * 80) / 100 : budget.total}
+              {budget.total}
               <small>€</small>
             </div>
             <button

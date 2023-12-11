@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import { services } from "../services.js";
 
 export const Context = createContext();
@@ -12,7 +12,7 @@ export const ContextProvider = ({ children }) => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [budgetList, setBudgetList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+
   const [discount, setDiscount] = useState(false);
 
   const updateUrl = () => {
@@ -61,11 +61,11 @@ export const ContextProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createBudget({ name, phone, email, email, service });
+    createBudget({ name, phone, email, service, total });
     setName("");
     setPhone(0);
     setEmail("");
-    setTotal(total);
+    setTotal(0);
   };
 
   function deleteTask(taskId) {
@@ -86,7 +86,7 @@ export const ContextProvider = ({ children }) => {
           ? language
           : undefined,
         date: new Date(),
-        total,
+        total: discount ? (budget.total * 80) / 100 : budget.total,
       },
     ]);
   }
